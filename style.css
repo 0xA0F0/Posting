@@ -1,0 +1,434 @@
+    /*___           ___           ___           ___           ___         ___           |
+     /  /\         /__/|         /  /\         /  /\         /  /\       /  /\          |
+    /  /::\       |  |:|        /  /::\       /  /::\       /  /:/_     /  /::\         |
+   /  /:/\:\      |  |:|       /  /:/\:\     /  /:/\:\     /  /:/ /\   /  /:/\:\        |
+  /  /:/  \:\   __|__|:|      /  /:/~/::\   /  /:/  \:\   /  /:/ /:/  /  /:/  \:\       |
+ /__/:/ \__\:\ /__/::::\____ /__/:/ /:/\:\ /__/:/ \__\:\ /__/:/ /:/  /__/:/ \__\:\      |
+ \  \:\ /  /:/    ~\~~\::::/ \  \:\/:/__\/ \  \:\ /  /:/ \  \:\/:/   \  \:\ /  /: /     |
+  \  \:\  /:/      |~~|:|~~   \  \::/       \  \:\  /:/   \  \::/     \  \:\  /: / /    |
+   \  \:\/:/       |  |:|      \  \:\        \  \:\/:/     \  \:\      \  \:\/: / /     |
+    \  \::/        |  |:|       \  \:\        \  \::/       \  \:\      \  \:: / /      |
+     \__\/         |__|/         \__\/         \__\/         \__\/       \__\*/ /*      |
+                                                                                        | 
+/*--------------------------------------------------------------------------------------|*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+:root {
+    --bg: #1e1f22;
+    --color: white;
+    --surface: rgb(8 8 8 / 80%);
+    --color-1: #303030;
+    --color-2: #222121;
+    --color-3: hsl(0deg 0% 54.24% / 15%);
+    --color-4: rgb(64 77 120 / 35%);
+    --color-5: rgb(139 194 167 / 15%);
+    --color-6: #99cdff;
+    --color-7: #bababa;
+    --color-8: rgb(203 239 103 / 40%);
+    --color-9: rgb(239 103 103 / 40%);
+}
+
+/*reset*/
+
+button,
+input,
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--color-6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: var(--color);
+    font-family: monospace, "Material Design Icons";
+    font-size: 13px;
+}
+::-moz-selection {
+    background-color: white;
+    color: black;
+}
+::selection {
+    background-color: white;
+    color: black;
+}
+:focus {
+    outline: none;
+}
+
+body {
+    background-color: var(--bg);
+}
+
+body:before {
+    --size: 60px;
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: -o-linear-gradient(
+                            left,
+                            var(--color-3) 1px,
+                            transparent 1px var(--size)
+                    )
+                    50% 50% / var(--size) var(--size),
+            -o-linear-gradient(
+                            var(--color-3) 1px,
+                            transparent 1px var(--size)
+                    ) 50% 50% / var(--size) var(--size);
+    background: linear-gradient(
+                            90deg,
+                            var(--color-3) 1px,
+                            transparent 1px var(--size)
+                    )
+                    50% 50% / var(--size) var(--size),
+            linear-gradient(var(--color-3) 1px, transparent 1px var(--size))
+                    50% 50% / var(--size) var(--size);
+    top: 0;
+    z-index: -1;
+    -webkit-transform: translate3d(0, 0, -100vmin);
+    transform: translate3d(0, 0, -100vmin);
+}
+
+.main {
+    padding: 0 10px;
+}
+
+/* message  */
+
+#message {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: white;
+    z-index: 9;
+}
+
+.error {
+    background-color: #7a0000;
+}
+.success {
+    background-color: #068046;
+}
+
+/* LOGIN */
+
+.login {
+    margin: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.login input,
+.login button {
+    border: 3px solid var(--color-1);
+    padding: 5px;
+    background: var(--color-2);
+}
+
+.login input:focus,
+.login button:not(.eye):focus {
+    background-color: black;
+}
+
+.login .ghjeiwefwe {
+    display: none !important;
+    height: 31px;
+}
+
+.main .login .showed ~ .ghjeiwefwe,
+.main .login .showed ~ .eye {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.main .login .showed,
+.eye {
+    display: none;
+}
+
+.main .login .show {
+    opacity: 0.5;
+}
+.main .login .show:hover {
+    opacity: 1;
+}
+
+/* ADD  */
+
+.add {
+    max-width: 300px;
+    width: 100%;
+    margin: 15px;
+    position: relative;
+}
+.add .controls > * {
+    padding: 5px;
+}
+
+.controls ::-webkit-input-placeholder {
+    color: var(--color-7);
+}
+
+.controls ::-moz-placeholder {
+    color: var(--color-7);
+}
+
+.controls :-ms-input-placeholder {
+    color: var(--color-7);
+}
+
+.controls ::-ms-input-placeholder {
+    color: var(--color-7);
+}
+
+.controls ::placeholder {
+    color: var(--color-7);
+}
+
+.add .items,
+.add .logout {
+    cursor: pointer;
+    opacity: 0.7;
+}
+.add .items:hover,
+.add .logout:hover {
+    opacity: 1;
+}
+.add .items ~ .controls {
+    display: none;
+}
+.add .items.allowed ~ .controls {
+    position: absolute;
+    background-color: var(--bg);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 5px;
+    border: solid 3px var(--color-1);
+    padding: 5px;
+    border-radius: 3px;
+    margin-top: 15px;
+    z-index: 9;
+}
+
+.add .items:before {
+    content: "󰐕";
+}
+.add .logout {
+    font-size: 19px;
+}
+.add .items {
+    font-size: 21px;
+    -webkit-transition: -webkit-transform 120ms linear;
+    transition: -webkit-transform 120ms linear;
+    -o-transition: transform 120ms linear;
+    transition: transform 120ms linear;
+    transition: transform 120ms linear, -webkit-transform 120ms linear;
+}
+.add .items.allowed {
+    display: inline-block;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.add .send {
+    background-color: var(--color-3);
+}
+
+.add .send:hover {
+    background-color: var(--color-4);
+}
+
+.add .send:active {
+    background-color: var(--color-5);
+}
+
+.logout:before {
+    content: "󰍃";
+}
+
+.link.editable {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+}
+
+.link.editable input {
+    border-radius: 4px;
+}
+
+.link.editable > *:not(div) {
+    padding: 10px;
+    background-color: var(--color-2);
+}
+
+.delete {
+    color: red;
+}
+
+.eddel {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 5px;
+    place-items: flex-start;
+}
+
+.eddel > button {
+    opacity: 0.5;
+}
+.eddel > button:hover {
+    opacity: 1;
+}
+
+.link.editable > div > button:active {
+    background-color: var(--color-5);
+}
+.link.editable > div > button:hover {
+    background-color: var(--color-4);
+}
+.link.editable > div > button {
+    padding: 3px 5px;
+    border-radius: 4px;
+}
+.link.editable > div > .save {
+    background-color: var(--color-8);
+}
+
+.link.editable > div > .cancel {
+    background-color: var(--color-9);
+}
+
+.link.editable textarea {
+    z-index: 1;
+}
+.link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.link.editable > *,
+.link {
+    width: 100%;
+}
+
+.link a {
+    width: 95%;
+    display: -webkit-box;
+    padding: 2px 8px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.link:hover a {
+    overflow: inherit;
+    display: inherit;
+}
+
+/* LINKS */
+
+.links {
+    --size: 850px;
+    max-width: var(--size);
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--surface);
+    padding: 20px 10px;
+    -webkit-box-shadow: 0 0 0px 3px var(--color-1);
+    box-shadow: 0 0 0px 3px var(--color-1);
+    border-radius: 4px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* SEARCH */
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+.search {
+    background-color: var(--color-2);
+    border: 2px solid var(--color-1);
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 5px;
+    color: var(--color);
+    font-size: 13px;
+}
+
+.links .search,
+.links .ok,
+body:has(.link.editable) .sh {
+    display: none;
+}
+.links .ok ~ .search {
+    display: initial;
+}
+.links .none {
+    cursor: pointer;
+    font-size: 18px;
+    width: 16px;
+}
+
+.sh {
+    position: relative;
+}
+.rem {
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    color: red;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.rem:hover {
+    color: #ae2700;
+}

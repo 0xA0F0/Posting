@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful Links</title>
+    <link rel="icon" type="image/svg" href="files/favicon/fav.svg">
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css" integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Vue.js  -->
+    <script src="all.js" type="module"></script>
+  </head>
+  <body>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- MAIN -->
+    <template id="main">
+  <main class="main">
+    <div class="login" v-if="!isLoggedIn">
+      <span class="mdi mdi-key"  @click="show($event)" :class="{ showed: isShow }" style="cursor: pointer; font-size: 20px;"></span>
+      <input id="password-field" class="ghjeiwefwe" type="password" size="15" style="border-radius: 3px 0 0 3px;" v-model="password" placeholder="password" @keyup.enter="login" @input="handleInput" >      <button id="toggle-password" class="mdi eye mdi-eye-closed" @click="togglePasswordVisibility" > <span class="icon"></span> </button>
+      <button  class="mdi mdi-login ghjeiwefwe" @click="login" style="display: flex; align-self: center; border-radius: 0 4px 4px 0; font-size: 15px;border-left:none"></button>
+      
+    </div>
+   <div v-else>
+      <div class="add">
+        <button class="logout" @click="logout"></button>
+        <button class="items" @click="on"></button>
+        <div class="controls">
+          <input type="url" v-model="link" placeholder="link" pattern="https://.*" style="border-bottom: 1px solid var(--color-1);" @input="handleInput">
+          <textarea v-model="description" placeholder="description" style="resize: none;border-bottom: 1px solid var(--color-1);" @input="handleInput"></textarea>
+          <button class="send" @click="submitData">Add</button>
+        </div>
+      </div>
+    </div>
+     <!-- -- -->
+    <div id="links" class="links">
+      <div class="sh">
+        <span class="none mdi mdi-magnify" @click="none"></span>
+        <input type="search" id="search" class="search" placeholder="Search..." v-model="searchQuery" name="q" @input="handleInput"/>
+        <button v-if="isOk" @click="removeOk" class="mdi mdi-close rem"></button>
+      </div>      
+      <div v-for="linkItem in filteredLinks" :key="linkItem.id" :class="['link', { 'editable': editMode && editLinkId === linkItem.id }]">
+        <template v-if="editMode && editLinkId === linkItem.id">
+          <!-- -- -->
+          <input type="url"  v-model="editLink" placeholder="link" pattern="https://.*" @input="handleInput" >
+          <textarea v-model="editDescription" placeholder="description" style="border-radius: 4px; resize: none;" @input="handleInput"></textarea>
+          <div style="display: flex; gap: 5px;">
+            <button class="mdi mdi-content-save-check save" style="font-size:16px" @click="saveEditedLink(linkItem.id)"></button>
+            <button class="mdi mdi-cancel cancel" @click="cancelEdit" v-if="editMode"></button>
+          </div>
+        </template>
+        <template v-else>
+          <!-- -- -->
+          <a :href="linkItem.link" target="_blank">{{ linkItem.description }}</a>
+          <div class="eddel" v-if="isLoggedIn">
+            <button class="edit mdi mdi-lead-pencil" style="font-size:16px" @click="editLinkData(linkItem.id, linkItem.link, linkItem.description)" v-if="!editMode"></button>
+            <button class="delete mdi mdi-trash-can-outline" style="font-size:16px" @click="deleteLink(linkItem.id)" v-if="!editMode"></button>
+          </div>
+        </template>
+      </div>
+    </div>
+    <!-- Messages -->
+    <div id="message" :class="{ 'success': message.type === 'success', 'error': message.type === 'error' }">{{ message.text }}</div>
+  </main>
+</template>
+  </body>
+</html>
